@@ -25,7 +25,28 @@ aggregated_data = huairou_df.groupby('hour').agg({
     'O3': ['mean']
 }) 
 
-st.write(monthly_so2)
+# Visualizations
+# Pertanyaan 1: Pola bulanan konsentrasi SO2 dan NO2
+plt.figure(figsize=(10, 6))
+plt.bar(monthly_so2.index - 0.2, monthly_so2.values, width=0.4, color='blue', label='SO2')
+plt.bar(monthly_no2.index + 0.2, monthly_no2.values, width=0.4, color='green', label='NO2')
+plt.title('Perbandingan Pola Bulanan Konsentrasi SO2 dan NO2 di Huairou')
+plt.xlabel('Bulan')
+plt.ylabel('Konsentrasi Rata-rata')
+plt.xticks(range(1, 13))  # Label bulan dari 1 hingga 12
+plt.legend()
+plt.grid(True)
+st.pyplot()
+
+# Pertanyaan 2: Kualitas udara berdasarkan jam dalam satu hari di Huairou
+aggregated_data.plot(kind='line', figsize=(12, 8), marker='o')
+plt.title('Perbandingan Kualitas Udara Berdasarkan Jam')
+plt.xlabel('Jam dalam Sehari')
+plt.ylabel('Rata-rata Kualitas Udara')
+plt.xticks(range(24))
+plt.grid(True)
+plt.legend(title='Parameter')
+st.pyplot()
 
 st.subheader("Kesimpulan Pertanyaan 1:")
 st.write("Terlihat bahwa konsentrasi SO2 cenderung lebih tinggi pada awal tahun, terutama pada bulan Januari, Februari, dan Maret. Hal ini mungkin terkait dengan kondisi cuaca dan pola emisi dari berbagai sumber pada periode tersebut. Konsentrasi SO2 kemudian menurun secara bertahap sepanjang tahun, mencapai titik terendah pada bulan Agustus, sebelum kembali meningkat menuju akhir tahun. Sedangkan konsentrasi NO2 juga menunjukkan pola yang mirip dengan konsentrasi SO2. Konsentrasi NO2 mencapai puncak tertinggi pada bulan November dan Desember.")
