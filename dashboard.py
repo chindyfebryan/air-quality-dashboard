@@ -27,7 +27,7 @@ aggregated_data = huairou_df.groupby('hour').agg({
 }) 
 
 # Visualizations
-st.write('Bagaimana pola bulanan konsentrasi SO2 dan NO2 di Huairou?')
+st.subheader('Bagaimana pola bulanan konsentrasi SO2 dan NO2 di Huairou?')
 plt.figure(figsize=(10, 6))
 plt.bar(monthly_so2.index - 0.2, monthly_so2.values, width=0.4, color='blue', label='SO2')
 plt.bar(monthly_no2.index + 0.2, monthly_no2.values, width=0.4, color='green', label='NO2')
@@ -39,7 +39,7 @@ plt.legend()
 plt.grid(True)
 st.pyplot()
 
-st.write('Bagaimana kualitas udara berdasarkan jam dalam satu hari di Huairou?')
+st.subheader('Bagaimana kualitas udara berdasarkan jam dalam satu hari di Huairou?')
 aggregated_data.plot(kind='line', figsize=(12, 8), marker='o')
 plt.title('Perbandingan Kualitas Udara Berdasarkan Jam')
 plt.xlabel('Jam dalam Sehari')
