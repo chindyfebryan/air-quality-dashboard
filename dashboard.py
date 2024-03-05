@@ -14,7 +14,7 @@ csv_url = 'https://raw.githubusercontent.com/chindyfebryan/air-quality-dashboard
 def load_data(url):
     response = requests.get(url)
     content = response.content
-    csv_file = pd.read_csv(pd.compat.StringIO(content.decode('utf-8')))
+    csv_file = pd.read_csv(pd.compat.StringIO(content.decode('ISO-8859-1')))
     return csv_file
 
 # Load CSV data
