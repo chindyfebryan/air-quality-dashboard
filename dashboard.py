@@ -6,7 +6,7 @@ import numpy as np
 st.title('Air Quality in Huairou')
 
 # GitHub CSV file URL
-csv_url = 'https://raw.githubusercontent.com/chindyfebryan/analisis-data/main/all_data.csv'
+csv_url = 'https://raw.githubusercontent.com/chindyfebryan/air-quality-dashboard/main/all_data.csv'
 
 # Function to load CSV data
 def load_data(url):
