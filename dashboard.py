@@ -10,15 +10,7 @@ st.title('Air Quality in Huairou')
 # GitHub CSV file URL
 csv_url = 'https://raw.githubusercontent.com/chindyfebryan/air-quality-dashboard/main/all_data.csv'
 
-# Function to load CSV data
-def load_data(url):
-    response = requests.get(url)
-    content = response.content
-    csv_file = pd.read_csv(pd.compat.StringIO(content.decode('ISO-8859-1')))
-    return csv_file
-
-# Load CSV data
-huairou_df = load_data(csv_url)
+huairou_df = pd.read_csv(csv_url)
 
 monthly_so2 = huairou_df.groupby('month')['SO2'].mean()
 monthly_no2 = huairou_df.groupby('month')['NO2'].mean()
