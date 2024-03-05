@@ -3,7 +3,24 @@ import streamlit as st
 import numpy as np
 
 # Title of the web app
-st.title('Random Number Generator')
+st.title('Air Quality in Huairou')
+
+huairou_df = pd.read_csv('all_data.csv')
+
+monthly_so2 = huairou_df.groupby('month')['SO2'].mean()
+monthly_no2 = huairou_df.groupby('month')['NO2'].mean()
+
+huairou_df['hour'] = pd.to_datetime(huairou_df['hour'], format='%H').dt.hour
+
+aggregated_data = huairou_df.groupby('hour').agg({
+    'PM2.5': ['mean'],
+    'PM10': ['mean'],
+    'SO2': ['mean'],
+    'NO2': ['mean'],
+    'O3': ['mean']
+}) 
+
+st.write(monthly_so2)
 
 st.subheader("Kesimpulan Pertanyaan 1:")
 st.write("Terlihat bahwa konsentrasi SO2 cenderung lebih tinggi pada awal tahun, terutama pada bulan Januari, Februari, dan Maret. Hal ini mungkin terkait dengan kondisi cuaca dan pola emisi dari berbagai sumber pada periode tersebut. Konsentrasi SO2 kemudian menurun secara bertahap sepanjang tahun, mencapai titik terendah pada bulan Agustus, sebelum kembali meningkat menuju akhir tahun. Sedangkan konsentrasi NO2 juga menunjukkan pola yang mirip dengan konsentrasi SO2. Konsentrasi NO2 mencapai puncak tertinggi pada bulan November dan Desember.")
