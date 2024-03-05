@@ -1,6 +1,7 @@
 # Importing necessary libraries
 import streamlit as st
 import numpy as np
+import pandas as pd
 
 # Title of the web app
 st.title('Air Quality in Huairou')
