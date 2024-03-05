@@ -18,9 +18,6 @@ def load_data(url):
 # Load CSV data
 huairou_df = load_data(csv_url)
 
-
-huairou_df = pd.read_csv('all_data.csv')
-
 monthly_so2 = huairou_df.groupby('month')['SO2'].mean()
 monthly_no2 = huairou_df.groupby('month')['NO2'].mean()
 
